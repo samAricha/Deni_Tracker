@@ -5,12 +5,16 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import teka.android.denitracker.data.repository.MyDataStoreRepository
 import teka.android.denitracker.data.source.remote.retrofit.AuthService
+import teka.android.denitracker.data.source.remote.retrofit.RetrofitProvider
 import teka.android.denitracker.data.source.remote.retrofit.models.LoginRequest
 import teka.android.denitracker.data.source.remote.retrofit.models.RegisterRequest
+import javax.inject.Inject
 
-class AuthManager(private val authService: AuthService,
-                  private val dataStoreRepository: MyDataStoreRepository
+class AuthManager @Inject constructor(
+    private val dataStoreRepository: MyDataStoreRepository
 ) {
+
+    private val authService: AuthService = RetrofitProvider.createAuthService()
 
 
     suspend fun login(email: String, password: String): Boolean {
@@ -41,7 +45,13 @@ class AuthManager(private val authService: AuthService,
         return dataStoreRepository.getAccessToken.first()
     }
 
+    suspend fun isAuthenticated(): Boolean{
+        val isAuthenticated = dataStoreRepository.readLoggedInState()
+        return isAuthenticated.first()
+    }
+
     suspend fun clearAuthToken() {
         dataStoreRepository.saveToken("")
     }
 }
+

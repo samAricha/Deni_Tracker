@@ -1,16 +1,15 @@
-package teka.android.organiks_platform_android.modules.splash_screen.presentation
+package teka.android.denitracker.ui.presentation.splash_screen.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import teka.android.organiks_platform_android.repository.DataStoreRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class WelcomeViewModel @Inject constructor(
-    private val repository: DataStoreRepository
+    private val repository: MyDataStoreRepository
 ) : ViewModel() {
 
     fun saveOnBoardingState(completed: Boolean) {

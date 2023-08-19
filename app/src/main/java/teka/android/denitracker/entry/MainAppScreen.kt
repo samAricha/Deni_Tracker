@@ -6,14 +6,13 @@ import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -28,13 +27,11 @@ import teka.android.denitracker.R
 import teka.android.denitracker.data.repository.MyDataStoreRepository
 import teka.android.denitracker.navigation.MainNavGraph
 import teka.android.denitracker.navigation.Screen
-import teka.android.denitracker.ui.theme.Purple80
+import teka.android.denitracker.ui.theme.PrimaryColor
 
-
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MainAppScreen(dataStoreRepository: MyDataStoreRepository) {
+fun MainAppScreen() {
     val navController = rememberNavController()
 
     Scaffold(
@@ -45,7 +42,7 @@ fun MainAppScreen(dataStoreRepository: MyDataStoreRepository) {
     ){
 
         Box(modifier = Modifier.padding(bottom = 60.dp)) {
-            MainNavGraph(navController = navController, dataStoreRepository)
+            MainNavGraph(navController = navController)
         }
 
     }
@@ -54,7 +51,6 @@ fun MainAppScreen(dataStoreRepository: MyDataStoreRepository) {
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarComponent(){
     TopAppBar(
@@ -75,7 +71,7 @@ sealed class BottomBarItem(
     val iconRes: Int,
     val contentDescription: String,
     val label: String,
-    ) {
+) {
     object RegistrationScreen : BottomBarItem(
         route = Screen.RegistrationScreen.route,
         iconRes = R.drawable.baseline_person_add_alt_1_24,
@@ -102,15 +98,16 @@ fun BottomNavigationComponent(navController: NavController) {
 
 
     fun getTint(selected: Boolean): Color = if (selected) {
-        Purple80
+        PrimaryColor
     } else {
         Color.Gray
     }
 
-    NavigationBar(
+    BottomNavigation(
+        backgroundColor = MaterialTheme.colors.background
     ) {
         bottomNavigationItems.forEach { bottomItem ->
-            NavigationBarItem(
+            BottomNavigationItem(
                 selected  = currentRoute == bottomItem.route,
                 onClick = { navController.navigate(bottomItem.route) },
                 icon = {
@@ -131,5 +128,3 @@ fun BottomNavigationComponent(navController: NavController) {
 
     }
 }
-
-

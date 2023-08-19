@@ -1,7 +1,7 @@
-package teka.android.organiks_platform_android.modules.splash_screen.utils
+package teka.android.denitracker.ui.presentation.splash_screen.utils
 
 import androidx.annotation.DrawableRes
-import teka.android.organiks_platform_android.R
+import teka.android.denitracker.R
 
 sealed class OnBoardingPage(
     @DrawableRes

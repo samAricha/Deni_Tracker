@@ -11,7 +11,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "teka.android.denitracker"
+        applicationId "teka.android.tekeventandroidclient"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -40,7 +40,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.3.2'
+        kotlinCompilerExtensionVersion '1.2.0'
     }
     packagingOptions {
         resources {
@@ -82,7 +82,9 @@ dependencies {
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     // Navigation Compose
-    implementation("androidx.navigation:navigation-compose:2.7.0")
+    implementation("androidx.navigation:navigation-compose:2.6.0")
+
+
 
     //Coroutines
     def coroutine_version = "1.7.1"
@@ -99,4 +101,11 @@ dependencies {
 
     // compose ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+
+    //splash screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    // Pager and Indicators - Accompanist
+    implementation "com.google.accompanist:accompanist-pager:0.28.0"
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.28.0"
 }

@@ -11,10 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import teka.android.customauth.presentation.AuthViewModel
+import teka.android.denitracker.ui.presentation.auth.AuthViewModel
+import javax.inject.Inject
 
 @Composable
-fun HomeScreen(authViewModel:AuthViewModel) {
+fun HomeScreen() {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -22,8 +23,8 @@ fun HomeScreen(authViewModel:AuthViewModel) {
     ) {
         Text("Authenticated Content")
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { authViewModel.logout() }) {
-            Text("Logout")
-        }
+//        Button(onClick = { authViewModel.logout() }) {
+//            Text("Logout")
+//        }
     }
 }

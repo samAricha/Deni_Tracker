@@ -1,14 +1,10 @@
-package teka.android.organiks_platform_android.modules.splash_screen.presentation
+package teka.android.denitracker.ui.presentation.splash_screen.presentation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,12 +15,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.google.accompanist.pager.*
-import teka.android.organiks_platform_android.modules.splash_screen.utils.OnBoardingPage
-import teka.android.organiks_platform_android.navigation.Screen
-import teka.android.organiks_platform_android.ui.theme.Poppins
-import teka.android.organiks_platform_android.ui.theme.PrimaryColor
-import teka.android.organiks_platform_android.ui.theme.Shapes
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.HorizontalPagerIndicator
+import com.google.accompanist.pager.PagerState
+import com.google.accompanist.pager.rememberPagerState
+import teka.android.denitracker.navigation.Screen
+import teka.android.denitracker.ui.theme.PrimaryColor
+import teka.android.denitracker.ui.theme.Shapes
+import teka.android.denitracker.ui.presentation.splash_screen.utils.OnBoardingPage
 
 
 @ExperimentalAnimationApi
@@ -62,7 +61,7 @@ fun WelcomeScreen(
         ) {
 //            welcomeViewModel.saveOnBoardingState(completed = true)
             navController.popBackStack()
-            navController.navigate(Screen.Login.route)
+            navController.navigate(Screen.LoginScreen.route)
         }
 
     }
@@ -83,21 +82,21 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
             painter = painterResource(id = onBoardingPage.image),
             contentDescription = "Pager Image"
         )
-        Text(
+        androidx.compose.material.Text(
             modifier = Modifier
                 .fillMaxWidth(),
             text = onBoardingPage.title,
-            fontSize = MaterialTheme.typography.h4.fontSize,
+            fontSize = androidx.compose.material.MaterialTheme.typography.h4.fontSize,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
         )
-        Text(
+        androidx.compose.material.Text(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 40.dp)
                 .padding(top = 20.dp),
             text = onBoardingPage.description,
-            fontSize = MaterialTheme.typography.subtitle1.fontSize,
+            fontSize = androidx.compose.material.MaterialTheme.typography.subtitle1.fontSize,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center
         )
@@ -130,13 +129,13 @@ fun FinishButton(
                     .fillMaxWidth()
                     .padding(horizontal = 18.dp)
                     .padding(top = 18.dp),
-                colors = ButtonDefaults.buttonColors(
+                colors = androidx.compose.material.ButtonDefaults.buttonColors(
                     backgroundColor = PrimaryColor,
                     contentColor = Color.White
                 ),
                 shape = Shapes.large
             ) {
-                Text(text = "Finish", fontFamily = Poppins)
+                androidx.compose.material.Text(text = "Finish")
             }
         }
     }
