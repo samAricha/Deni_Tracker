@@ -28,6 +28,7 @@ import teka.android.denitracker.data.repository.MyDataStoreRepository
 import teka.android.denitracker.navigation.MainNavGraph
 import teka.android.denitracker.navigation.Screen
 import teka.android.denitracker.ui.theme.PrimaryColor
+import teka.android.denitracker.ui.theme.ReemKufi
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -56,7 +57,8 @@ fun TopBarComponent(){
     TopAppBar(
         title = {
             Text(
-                text = "Custom Authentication",
+                text = "Deni Tracker",
+                fontFamily = ReemKufi,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 color = Color.White

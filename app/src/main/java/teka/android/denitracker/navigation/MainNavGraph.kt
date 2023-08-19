@@ -28,7 +28,16 @@ fun MainNavGraph(
             HomeScreen()
         }
 
+        composable(
+            route = Screen.LoginScreen.route
+        ) {
+            LoginScreen(navController = navController)
+        }
 
-
+        composable(
+            route = Screen.RegistrationScreen.route
+        ) {
+            RegisterScreen(navController = navController)
+        }
     }
 }

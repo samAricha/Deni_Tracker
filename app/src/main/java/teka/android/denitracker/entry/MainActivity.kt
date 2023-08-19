@@ -11,89 +11,62 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
+import teka.android.denitracker.navigation.RootNavGraph
+import teka.android.denitracker.ui.presentation.auth.AuthViewModel
+import teka.android.denitracker.ui.presentation.auth.UserState
+import teka.android.denitracker.ui.presentation.splash_screen.presentation.SplashViewModel
 import teka.android.denitracker.ui.theme.DeniTrackerTheme
+import teka.android.denitracker.ui.theme.PrimaryColor
 import javax.inject.Inject
 
+@ExperimentalAnimationApi
+@ExperimentalPagerApi
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var splashViewModel: SplashViewModel
+
+    private val userState by viewModels<AuthViewModel>()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.statusBarColor = PrimaryColor.toArgb()
+
+        installSplashScreen().setKeepOnScreenCondition {
+            Log.d("TAG2", splashViewModel.isLoading.value.toString())
+            !splashViewModel.isLoading.value
+        }
+
+
         super.onCreate(savedInstanceState)
+
         setContent {
-            DeniTrackerTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+            CompositionLocalProvider(UserState provides userState) {
+                DeniTrackerTheme {
+                    androidx.compose.material.Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = androidx.compose.material.MaterialTheme.colors.background
+                    ) {
+                        val startDestination by splashViewModel.startDestination
+                        startDestination?.let {
+                            RootNavGraph(
+                                navController = rememberNavController(),
+                                startDestination = it
+                            )
+                        }
+                    }
                 }
             }
+
         }
     }
 }
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DeniTrackerTheme {
-        Greeting("Android")
-    }
-}
-
-
-
-//@ExperimentalAnimationApi
-//@ExperimentalPagerApi
-//@AndroidEntryPoint
-//class MainActivity : ComponentActivity() {
-//    @Inject
-//    lateinit var splashViewModel: SplashViewModel
-//
-//    private val userState by viewModels<AuthViewModel>()
-//
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        window.statusBarColor = PrimaryColor.toArgb()
-//
-//        installSplashScreen().setKeepOnScreenCondition {
-//            Log.d("TAG2", splashViewModel.isLoading.value.toString())
-//            !splashViewModel.isLoading.value
-//        }
-//
-//
-//        super.onCreate(savedInstanceState)
-//
-//        setContent {
-//            CompositionLocalProvider(UserState provides userState) {
-//                TekEventAndroidClientTheme {
-//                    androidx.compose.material.Surface(
-//                        modifier = Modifier.fillMaxSize(),
-//                        color = androidx.compose.material.MaterialTheme.colors.background
-//                    ) {
-//                        val startDestination by splashViewModel.startDestination
-//                        startDestination?.let {
-//                            RootNavGraph(
-//                                navController = rememberNavController(),
-//                                startDestination = it
-//                            )
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }
-//    }
-//}
