@@ -1,4 +1,4 @@
-package teka.android.denitracker.ui.presentation.auth.home
+package teka.android.denitracker.presentation.auth.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import teka.android.denitracker.ui.presentation.auth.AuthViewModel
+import teka.android.denitracker.presentation.auth.AuthViewModel
 import javax.inject.Inject
 
 @Composable

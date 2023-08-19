@@ -1,4 +1,4 @@
-package teka.android.denitracker.ui.presentation.splash_screen.utils
+package teka.android.denitracker.presentation.splash
 
 import androidx.annotation.DrawableRes
 import teka.android.denitracker.R

@@ -1,4 +1,4 @@
-package teka.android.denitracker.ui.presentation.splash_screen.presentation
+package teka.android.denitracker.presentation.splash
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -23,7 +23,6 @@ import com.google.accompanist.pager.rememberPagerState
 import teka.android.denitracker.navigation.Screen
 import teka.android.denitracker.ui.theme.PrimaryColor
 import teka.android.denitracker.ui.theme.Shapes
-import teka.android.denitracker.ui.presentation.splash_screen.utils.OnBoardingPage
 
 
 @ExperimentalAnimationApi

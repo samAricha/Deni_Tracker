@@ -1,4 +1,4 @@
-package teka.android.denitracker.ui.presentation.splash_screen.presentation
+package teka.android.denitracker.presentation.splash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

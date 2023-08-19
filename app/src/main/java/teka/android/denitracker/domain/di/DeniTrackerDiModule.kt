@@ -7,7 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import teka.android.denitracker.data.repository.MyDataStoreRepository
-import teka.android.denitracker.ui.presentation.splash_screen.presentation.SplashViewModel
+import teka.android.denitracker.presentation.splash.SplashViewModel
 import javax.inject.Singleton
 
 @Module

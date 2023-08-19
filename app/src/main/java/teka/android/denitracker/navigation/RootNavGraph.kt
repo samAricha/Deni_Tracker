@@ -14,8 +14,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import teka.android.denitracker.entry.MainAppScreen
-import teka.android.denitracker.ui.presentation.auth.UserState
-import teka.android.denitracker.ui.presentation.auth.login.LoginScreen
+import teka.android.denitracker.presentation.auth.UserState
+import teka.android.denitracker.presentation.auth.login.LoginScreen
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable

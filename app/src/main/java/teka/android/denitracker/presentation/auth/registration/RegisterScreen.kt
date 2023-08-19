@@ -1,4 +1,4 @@
-package teka.android.denitracker.ui.presentation.auth.login
+package teka.android.denitracker.presentation.auth.registration
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,27 +19,33 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import teka.android.denitracker.ui.presentation.auth.AuthViewModel
-import teka.android.denitracker.ui.presentation.auth.home.HomeScreen
+import teka.android.denitracker.presentation.auth.AuthViewModel
+import teka.android.denitracker.presentation.auth.home.HomeScreen
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(
-    navController: NavController = rememberNavController(),
+fun RegisterScreen(
+    navController: NavController,
     authViewModel: AuthViewModel = hiltViewModel()
 ) {
+    var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    val isLoggedInState = authViewModel.isLoggedIn.collectAsState()
+    var passwordConfirmation by remember { mutableStateOf("") }
+    val isRegisteredState = authViewModel.isRegistered.collectAsState()
 
-    if (isLoggedInState.value) {
+
+
+    if (isRegisteredState.value) {
         HomeScreen()
     } else {
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -47,6 +53,13 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            OutlinedTextField(
+                value = name,
+                onValueChange = { name = it },
+                label = { Text("Name") },
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(8.dp))
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
@@ -58,19 +71,27 @@ fun LoginScreen(
                 value = password,
                 onValueChange = { password = it },
                 label = { Text("Password") },
+                visualTransformation = PasswordVisualTransformation(),
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            OutlinedTextField(
+                value = passwordConfirmation,
+                onValueChange = { passwordConfirmation = it },
+                label = { Text("Confirm Password") },
+                visualTransformation = PasswordVisualTransformation(),
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = {
-                    authViewModel.login(email, password)
+                    authViewModel.register(name, email, password, passwordConfirmation)
                 },
                 modifier = Modifier.align(Alignment.End)
             ) {
-                Text("Login")
+                Text("Register")
             }
         }
+
     }
 }
-
-

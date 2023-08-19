@@ -1,4 +1,4 @@
-package teka.android.denitracker.ui.presentation.auth
+package teka.android.denitracker.presentation.auth
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.compositionLocalOf

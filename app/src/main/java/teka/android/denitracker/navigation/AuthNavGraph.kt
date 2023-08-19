@@ -4,8 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import teka.android.denitracker.ui.presentation.auth.registration.RegisterScreen
-import teka.android.denitracker.ui.presentation.auth.login.LoginScreen
+import teka.android.denitracker.presentation.auth.registration.RegisterScreen
+import teka.android.denitracker.presentation.auth.login.LoginScreen
 
 
 fun NavGraphBuilder.authNavGraph(
