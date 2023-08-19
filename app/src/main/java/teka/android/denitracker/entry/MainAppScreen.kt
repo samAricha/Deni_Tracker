@@ -15,6 +15,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -114,8 +115,11 @@ fun BottomNavigationComponent(navController: NavController) {
         Color.Gray
     }
 
+
     NavigationBar(
-        containerColor = MaterialTheme.colors.background
+        containerColor = MaterialTheme.colors.background,
+        tonalElevation = NavigationBarDefaults.Elevation
+
     ) {
         bottomNavigationItems.forEach { bottomItem ->
             NavigationBarItem(
