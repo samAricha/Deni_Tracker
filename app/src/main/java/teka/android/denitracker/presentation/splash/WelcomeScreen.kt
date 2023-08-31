@@ -1,5 +1,6 @@
 package teka.android.denitracker.presentation.splash
 
+import android.content.res.Resources.Theme
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
@@ -21,8 +22,8 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import teka.android.denitracker.navigation.Screen
-import teka.android.denitracker.ui.theme.PrimaryColor
 import teka.android.denitracker.ui.theme.Shapes
+import teka.android.denitracker.ui.theme.md_theme_light_background
 
 
 @ExperimentalAnimationApi
@@ -129,7 +130,7 @@ fun FinishButton(
                     .padding(horizontal = 18.dp)
                     .padding(top = 18.dp),
                 colors = androidx.compose.material.ButtonDefaults.buttonColors(
-                    backgroundColor = PrimaryColor,
+                    backgroundColor = md_theme_light_background,
                     contentColor = Color.White
                 ),
                 shape = Shapes.large

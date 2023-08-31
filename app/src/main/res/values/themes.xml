@@ -5,8 +5,8 @@
 
 
     <style name="Theme.DeniTracker" parent="android:Theme.Material.Light.NoActionBar" >
-        <item name="android:statusBarColor">@color/deni_tracker_purple</item>
         <item name="android:fontFamily">@font/reemkufi</item>
+        <item name="android:statusBarColor">@color/deni_tracker_primary</item>
     </style>
 
     <style name="Theme.CustomSplashScreenTheme" parent="Theme.SplashScreen">

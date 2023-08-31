@@ -1,5 +1,6 @@
 package teka.android.denitracker.presentation.auth.registration
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -26,6 +27,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import teka.android.denitracker.presentation.auth.AuthViewModel
 import teka.android.denitracker.presentation.auth.home.HomeScreen
+import teka.android.denitracker.ui.theme.buttonShapes
+import teka.android.denitracker.ui.theme.md_theme_light_scrim
+import teka.android.denitracker.ui.widgets.CustomButton
+import teka.android.denitracker.ui.widgets.CustomOutlinedTextField
+import teka.android.denitracker.ui.widgets.CustomPasswordTextField
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,46 +57,39 @@ fun RegisterScreen(
                 .fillMaxSize()
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
+
         ) {
-            OutlinedTextField(
+            CustomOutlinedTextField(
                 value = name,
-                onValueChange = { name = it },
-                label = { Text("Name") },
-                modifier = Modifier.fillMaxWidth()
+                label = "Name",
+                onValueChanged =  { name = it },
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            OutlinedTextField(
+
+            CustomOutlinedTextField(
                 value = email,
-                onValueChange = { email = it },
-                label = { Text("Email") },
-                modifier = Modifier.fillMaxWidth()
+                label = "Email",
+                onValueChanged =  { email = it },
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            OutlinedTextField(
+
+            CustomPasswordTextField(
                 value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") },
-                visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth()
+                onValueChanged = { password = it },
+                label = "Password",
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            OutlinedTextField(
+            CustomPasswordTextField(
                 value = passwordConfirmation,
-                onValueChange = { passwordConfirmation = it },
-                label = { Text("Confirm Password") },
-                visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth()
+                onValueChanged = { passwordConfirmation = it },
+                label = "Confirm Password"
             )
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
+            Spacer(modifier = Modifier.height(26.dp))
+
+            CustomButton(
                 onClick = {
                     authViewModel.register(name, email, password, passwordConfirmation)
                 },
-                modifier = Modifier.align(Alignment.End)
-            ) {
-                Text("Register")
-            }
+                content = "Register"
+            )
         }
 
     }

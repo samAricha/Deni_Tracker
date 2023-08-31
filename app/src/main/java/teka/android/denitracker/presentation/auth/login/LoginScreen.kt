@@ -26,6 +26,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import teka.android.denitracker.presentation.auth.AuthViewModel
 import teka.android.denitracker.presentation.auth.home.HomeScreen
+import teka.android.denitracker.ui.theme.TxtFieldShapes
+import teka.android.denitracker.ui.theme.buttonShapes
+import teka.android.denitracker.ui.widgets.CustomButton
+import teka.android.denitracker.ui.widgets.CustomOutlinedTextField
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,28 +51,29 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            OutlinedTextField(
+
+            CustomOutlinedTextField(
                 value = email,
-                onValueChange = { email = it },
-                label = { Text("Email") },
-                modifier = Modifier.fillMaxWidth()
+               label = "Email",
+                error = "",
+                onValueChanged =  { email = it },
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            OutlinedTextField(
+            CustomOutlinedTextField(
                 value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") },
-                modifier = Modifier.fillMaxWidth()
+               label = "Password",
+                error = "",
+                onValueChanged =  { password = it },
             )
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
+            Spacer(modifier = Modifier.height(26.dp))
+
+
+            CustomButton(
                 onClick = {
                     authViewModel.login(email, password)
                 },
-                modifier = Modifier.align(Alignment.End)
-            ) {
-                Text("Login")
-            }
+                content = "Login"
+            )
+
         }
     }
 }

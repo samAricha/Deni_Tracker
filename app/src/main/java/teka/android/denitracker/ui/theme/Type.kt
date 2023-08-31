@@ -10,7 +10,11 @@ import teka.android.denitracker.R
 
 // Set of Material typography styles to start with
 val ReemKufi = FontFamily(Font(R.font.reemkufi))
+val ReemKufiMedium = FontFamily(Font(R.font.reem_kufi_medium))
+val ReemKufiSemiBold = FontFamily(Font(R.font.reem_kufi_semi_bold))
+val ReemKufiBold = FontFamily(Font(R.font.reem_kufi_bold))
 val Poppins = FontFamily(Font(R.font.poppins))
+val PoppinsLight = FontFamily(Font(R.font.poppins_light))
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -21,7 +25,7 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
-    )
+    ),
     /* Other default text styles to override
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
@@ -31,11 +35,11 @@ val Typography = Typography(
         letterSpacing = 0.sp
     ),
     labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = PoppinsLight,
         fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
-    )
-    */
+    )*/
+
 )

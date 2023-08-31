@@ -20,7 +20,6 @@ import teka.android.denitracker.presentation.auth.AuthViewModel
 import teka.android.denitracker.presentation.auth.UserState
 import teka.android.denitracker.presentation.splash.SplashViewModel
 import teka.android.denitracker.ui.theme.DeniTrackerTheme
-import teka.android.denitracker.ui.theme.PrimaryColor
 import javax.inject.Inject
 
 @ExperimentalAnimationApi
@@ -34,7 +33,6 @@ class MainActivity : ComponentActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        window.statusBarColor = PrimaryColor.toArgb()
 
         installSplashScreen().setKeepOnScreenCondition {
             Log.d("TAG2", splashViewModel.isLoading.value.toString())
@@ -49,7 +47,6 @@ class MainActivity : ComponentActivity() {
                 DeniTrackerTheme {
                     androidx.compose.material.Surface(
                         modifier = Modifier.fillMaxSize(),
-                        color = androidx.compose.material.MaterialTheme.colors.background
                     ) {
                         val startDestination by splashViewModel.startDestination
                         startDestination?.let {
